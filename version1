@@ -1,0 +1,96 @@
+// class 01112023.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include <iostream>
+int stack[10], top = -1;
+using namespace std;
+
+void push(int[], int);
+void pop(int[]);
+void peek(int[]);
+void display(int[]);
+
+int main()
+{
+	int choice = 0;
+	int item = 0;
+
+	while (choice != 5)
+	{
+
+
+
+		cout << "Stack Menu\n" << endl;
+		cout << "1 = display" << endl;
+		cout << "2 = push" << endl;
+		cout << "3 = pop" << endl;
+		cout << "4 = peek" << endl;
+		cout << "5 = exit" << endl;
+		cin >> choice;
+
+
+		switch (choice)
+		{
+		case 1:
+			display(stack);
+			break;
+		case 2:
+			cout << "enter item to push" << endl;
+			cin >> item;
+			push(stack, item);
+			break;
+		case 3:
+			pop(stack);
+			break;
+		case 4:
+			peek(stack);
+			break;
+		case 5:
+			break;
+		default:
+			cout << "invalid choice" << endl;
+		}
+	}
+}
+void push(int stack[], int item)
+{
+	top++;
+	stack[top] = item;
+}
+
+void pop(int stack[])
+{
+	int deletedItem;
+	if (top == -1)
+	{
+		cout << "stack is empty" << endl;
+	}
+	else
+	{
+		deletedItem = stack[top];
+		top--;
+		cout << "deleted  " << deletedItem << endl;
+	}
+}
+
+void peek(int stack[])
+{
+	if (top == -1)
+	{
+		cout << "stack is empty" << endl;
+	}
+	else
+	{
+
+		cout << "peak item " << stack[top] << endl;
+	}
+}
+
+void display(int stack[])
+{
+	int i;
+	for (i = top - 1; i >= 0; i--)
+	{
+		cout << stack[i] << endl;
+	}
+}
